@@ -55,7 +55,7 @@ class Transcode {
         	// Fixed from pull-request: ea6c64d314eef47fe22ed250f0181e638abd2905
           // https://github.com/techwarriorz/simple-hls/commit/ea6c64d314eef47fe22ed250f0181e638abd2905
           // https://github.com/techwarriorz/simple-hls/compare/main...wug-ge:simple-hls:main?diff=unified
-          commands = commands.concat(['-vf', `scale=${r.width}:-2`, '-c:a', 'aac', '-ar', '48000', '-ac', '2', '-c:v', 'h264', `-profile:v`, r.profile, '-crf', '20', '-sc_threshold', '0', '-g', '48', '-hls_time', r.hlsTime, '-hls_playlist_type', 'vod', '-b:v', r.bv, '-maxrate', r.maxrate, '-bufsize', r.bufsize, '-b:a', r.ba, '-hls_segment_filename', `${this.outputPath}/${r.ts_title}_%03d.ts`, `${this.outputPath}/${r.height}.m3u8`]);
+          commands = commands.concat(['-vf', `scale=${r.width}:-2`, '-c:a', 'aac', '-ar', '48000', '-ac', '2', '-c:v', 'h264', `-profile:v`, r.profile, '-pix_fmt', 'yuv420p', '-crf', '20', '-sc_threshold', '0', '-g', '48', '-hls_time', r.hlsTime, '-hls_playlist_type', 'vod', '-b:v', r.bv, '-maxrate', r.maxrate, '-bufsize', r.bufsize, '-b:a', r.ba, '-hls_segment_filename', `${this.outputPath}/${r.ts_title}_%03d.ts`, `${this.outputPath}/${r.height}.m3u8`]);
 				}
          resolve(commands);
       })
